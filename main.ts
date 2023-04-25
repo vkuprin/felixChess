@@ -49,7 +49,7 @@ const champions = (players: Player[]): Player[] => {
             const isStronger = player.score > otherPlayer.score;
             const isYounger = player.age < otherPlayer.age;
 
-            return !(isStronger && isYounger) && !(isYounger && isStronger);
+            return !(isStronger && isYounger);
         });
 
         if (isChampion) {
