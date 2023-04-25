@@ -1,0 +1,20 @@
+{
+  "name": "felixchess",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.ts",
+  "scripts": {
+    "start": "npx ts-node main.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vkuprin/felixChess.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vkuprin/felixChess/issues"
+  },
+  "homepage": "https://github.com/vkuprin/felixChess#readme"
+}
