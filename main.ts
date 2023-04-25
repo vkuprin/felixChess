@@ -37,21 +37,23 @@ const data: Player[] = [
     },
 ];
 
-const champions = (players: Player[]): Player[] => {
+// Time complexity: ~O(n^2)
+const championsList = (players: Player[]): Player[] => {
     const champions: Player[] = [];
 
-    players.forEach((player) => {
-        const isChampion = players.every((otherPlayer) => {
-            if (player === otherPlayer) {
-                return true;
-            }
+    const sortedPlayers = players.slice().sort((a, b) => b.score - a.score);
 
-            const isStronger = player.score > otherPlayer.score;
-            const isYounger = player.age < otherPlayer.age;
-            const isSameAge = player.age === otherPlayer.age;
-            const isSameScore = player.score === otherPlayer.score;
+    sortedPlayers.forEach((player, index) => {
+        if (index === 0) {
+            champions.push(player);
+            return;
+        }
 
-            return !((isStronger && (isYounger || isSameAge)) || (isYounger && (isStronger || isSameScore)));
+        const isChampion = champions.every((champion) => {
+            const isStrongerOrSameScore = player.score >= champion.score;
+            const isYoungerOrSameAge = player.age <= champion.age;
+
+            return !(isStrongerOrSameScore && isYoungerOrSameAge);
         });
 
         if (isChampion) {
@@ -62,4 +64,4 @@ const champions = (players: Player[]): Player[] => {
     return champions;
 };
 
-console.log(champions(data));
+console.log(championsList(data));
